@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Flashlight } from '@ionic-native/flashlight/ngx';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,19 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor( private flashlight: Flashlight ) {
+  }
+
+  switchFlash( evento ) {
+
+    const power: boolean = evento.target.checked;
+    if (power) {
+      console.log('On');
+      this.flashlight.switchOn();
+    } else {
+      console.log('Off');
+      this.flashlight.switchOff();
+    }
+  }
 
 }
